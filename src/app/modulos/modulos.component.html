@@ -1,10 +1,16 @@
-<div class="container my-3">
-
+<form [formGroup]="formSearch" (ngSubmit)="search()">
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Nombre usuario" aria-describedby="search-user">
-    <button class="btn btn-primary" type="button" id="search-user">Aceptar</button>
+    <input formControlName="usuario" type="text" class="form-control" placeholder="Nombre usuario"
+      aria-describedby="search-user">
+    <button class="btn btn-primary" type="submit" id="search-user">Aceptar</button>
   </div>
+</form>
 
-  Aqui van las graficas
-  Aqui muestro la lista de los que busco
+<div class="row">
+  <div class="col-12 col-md-6">
+    Aqui van las graficas
+  </div>
+  <div class="col-12 col-md-6">
+    <app-list-users (irPerfil)="irPerfil($event)" [arrayUsers]="arrayUsers"></app-list-users>
+  </div>
 </div>

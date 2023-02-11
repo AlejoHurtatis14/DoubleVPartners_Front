@@ -5,7 +5,10 @@ import { ModulosComponent } from './modulos.component';
 const routes: Routes = [{
   path: '',
   component: ModulosComponent
-}];
+}, {
+  path: 'perfil/:login',
+  loadChildren: () => import('./info-user/info-user.module').then(m => m.InfoUserModule)
+},];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

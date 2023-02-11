@@ -116,6 +116,5 @@
     "@schematics/angular:component": {
       "style": "scss"
     }
-  },
-  "defaultProject": "front-doublevparnerts"
+  }
 }

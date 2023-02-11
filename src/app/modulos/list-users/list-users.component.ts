@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { User } from '../config/interface-user';
 
 @Component({
   selector: 'app-list-users',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListUsersComponent implements OnInit {
 
+  @Input() arrayUsers: Array<User> = [];
+  @Output() irPerfil = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  irUrlPerfil(login: string) {
+    this.irPerfil.emit(login);
   }
 
 }

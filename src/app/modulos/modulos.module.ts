@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ModulosComponent } from './modulos.component';
 import { ModulosRoutingModule } from './modulos-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+import { ListUsersModule } from './list-users/list-users.module';
 
 
 
@@ -16,7 +16,7 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
     ModulosRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RxReactiveFormsModule
+    ListUsersModule
   ]
 })
 export class ModulosModule { }

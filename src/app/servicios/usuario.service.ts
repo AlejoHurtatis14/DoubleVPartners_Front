@@ -1,6 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { User } from '../modulos/config/interface-user';
+
+interface ResponseSearch {
+  incomplete_results: boolean,
+  items: Array<User>,
+  total_count: number
+}
 
 @Injectable({
   providedIn: 'root'
@@ -8,25 +15,16 @@ import { environment } from 'src/environments/environment';
 export class UsuarioService {
 
   private url = environment.urlApi;
-  private _usuario: string = '';
 
   constructor(
     private http: HttpClient
   ) { }
 
-  /* @required({ message: 'Ingrese un valor valido.' }) */
-  public get usuario(): string {
-    return this._usuario;
-  }
-  public set usuario(value: string) {
-    this._usuario = value;
-  }
-
   searchUser(name: string) {
-    this.http.get(`${this.url}search/users?q=${name}`);
+    return this.http.get<ResponseSearch>(`${this.url}search/users?q=${name}&per_page=10`);
   }
 
   getUser(user: string) {
-    this.http.get(`${this.url}users/${user}`);
+    return this.http.get<User>(`${this.url}users/${user}`);
   }
 }
