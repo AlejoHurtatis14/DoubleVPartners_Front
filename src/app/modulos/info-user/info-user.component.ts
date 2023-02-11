@@ -10,6 +10,7 @@ import { User } from '../config/interface-user';
 })
 export class InfoUserComponent implements OnInit {
 
+  errorQuery: string = '';
   userCurrent!: User;
 
   constructor(
@@ -21,23 +22,19 @@ export class InfoUserComponent implements OnInit {
       next: ({ login }) => {
         this.obtenerUsuario(login);
       },
-      error: (error) => {
-        console.log(error);
+      error: ({ error }) => {
+        this.errorQuery = 'No se econtro parámetro en la url';
       }
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   obtenerUsuario(login: string) {
-    this.userSvc.getUser(login).subscribe({
-      next: (user: User) => {
-        this.userCurrent = user;
-      },
-      error: (error) => {
-        console.log(error);
-      }
+    this.userSvc.getUser(login).then((user: User) => {
+      this.userCurrent = user;
+    }).catch(({error}) => {
+      this.errorQuery = (error && error.message ? error.message : 'No fue posible organizar obtener la información');
     });
   }
 

@@ -6,16 +6,20 @@
         <img [src]="user.avatar_url" class="img-fluid img-thumbnail m-1" alt="Foto Perfil">
       </picture>
     </div>
-    <div class="col-6">
+    <div class="col-6 d-flex align-items-center">
       <div class="ms-2 me-auto">
         <div class="fw-bold">{{ user.login }}</div>
         {{ user.id }}
       </div>
     </div>
     <div class="col-4 d-flex align-items-center">
-      <button (click)="irUrlPerfil(user.login)" type="button" class="btn btn-primary w-75">
+      <button (click)="irUrlPerfil(user.login, user.score)" type="button" class="btn btn-primary w-75">
         <i class="fas fa-user"></i> Ir Perfil
       </button>
     </div>
   </div>
+</div>
+
+<div *ngIf="!arrayUsers.length && messageError == ''" class="alert alert-info text-center">
+  No se encontraron resultados
 </div>

@@ -9,6 +9,7 @@ import { User } from '../config/interface-user';
 export class ListUsersComponent implements OnInit {
 
   @Input() arrayUsers: Array<User> = [];
+  @Input() messageError: string = '';
   @Output() irPerfil = new EventEmitter();
 
   constructor() { }
@@ -16,8 +17,8 @@ export class ListUsersComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  irUrlPerfil(login: string) {
-    this.irPerfil.emit(login);
+  irUrlPerfil(login: string, score: number) {
+    this.irPerfil.emit({ login, score });
   }
 
 }

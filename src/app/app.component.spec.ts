@@ -1,4 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -7,6 +10,11 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule
+      ]
     }).compileComponents();
   });
 
@@ -16,16 +24,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'front-doublevparnerts'`, () => {
+  it(`should have as title 'Prueba DoubleVParnerts'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('front-doublevparnerts');
+    expect(app.title).toEqual('Prueba DoubleVParnerts');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('front-doublevparnerts app is running!');
-  });
 });

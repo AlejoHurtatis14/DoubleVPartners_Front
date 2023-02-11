@@ -1,16 +1,26 @@
+<app-message-error [message]="errorQuery"></app-message-error>
+
 <form [formGroup]="formSearch" (ngSubmit)="search()">
   <div class="input-group mb-3">
-    <input formControlName="usuario" type="text" class="form-control" placeholder="Nombre usuario"
+    <input formControlName="usuario" type="text" class="form-control"
+      [ngClass]="{'is-invalid':messageSearch != '' && messageSearch != 'no'}" placeholder="Nombre usuario" id="inputBuscar"
       aria-describedby="search-user">
-    <button class="btn btn-primary" type="submit" id="search-user">Aceptar</button>
+    <button class="btn btn-primary" type="submit" id="search-user">
+      <i class="fas fa-search"></i> Buscar
+    </button>
+    <div *ngIf="messageSearch != '' && messageSearch != 'no'" id="validationServerUsernameFeedback"
+      class="invalid-feedback">
+      {{ messageSearch }}
+    </div>
   </div>
 </form>
 
 <div class="row">
   <div class="col-12 col-md-6">
-    Aqui van las graficas
+    <canvas id="acquisitions"></canvas>
   </div>
   <div class="col-12 col-md-6">
-    <app-list-users (irPerfil)="irPerfil($event)" [arrayUsers]="arrayUsers"></app-list-users>
+    <app-list-users (irPerfil)="irPerfil($event)" [arrayUsers]="arrayUsers"
+      [messageError]="messageSearch"></app-list-users>
   </div>
 </div>

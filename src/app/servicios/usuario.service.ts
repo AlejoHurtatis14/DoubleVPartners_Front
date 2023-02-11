@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { User } from '../modulos/config/interface-user';
@@ -15,6 +15,7 @@ interface ResponseSearch {
 export class UsuarioService {
 
   private url = environment.urlApi;
+  private token = environment.tokenApi;
 
   constructor(
     private http: HttpClient
@@ -25,6 +26,21 @@ export class UsuarioService {
   }
 
   getUser(user: string) {
-    return this.http.get<User>(`${this.url}users/${user}`);
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`
+    });
+
+    const promise = new Promise<User>(async (resolve, reject) => {
+      await this.http.get<User>(`${this.url}users/${user}`, { headers }).subscribe({
+        next: (user: User) => {
+          resolve(user);
+        },
+        error: (err: any) => {
+          reject(err);
+        },
+        complete: () => { },
+      });
+    });
+    return promise;
   }
 }
