@@ -1,6 +1,6 @@
 # FrontDoublevparnerts
 
-Este proyecto interactua con la api de github para realizar funcionalidades respectivas, si se contiene algun token para que las peticiones no superen el tiempo limite, ir al archivo src/enviroment/enviroment.ts y en la propuedad del token agregar el token entregado por github y asi tener un correcto funcionamiento
+Este proyecto interactua con la api de github para realizar funcionalidades respectivas, si se contiene algun token para que las peticiones no superen el tiempo limite, ir al archivo `src/enviroment/enviroment.ts` y en la propiedad del token agregar el token entregado por github y asi tener un correcto funcionamiento
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
 
